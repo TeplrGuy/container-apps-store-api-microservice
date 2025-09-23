@@ -90,18 +90,26 @@ Run the `node-app` (store-api) service in a new terminal window:
 
 ```bash
 dapr run --app-id node-app --app-port 3000 --dapr-http-port 3501 --components-path ./dapr-components -- npm run start
+
+Updated: C:\dapr\dapr.exe run --app-id node-app --app-port 3000 --dapr-http-port 3501 --resources-path ../dapr-components -- npm run start  
 ```
 
 Run the `python-app` (order) service in a new terminal window:
 
 ```bash
 dapr run --app-id python-app --app-port 5000 --dapr-http-port 3500 --components-path ./dapr-components -- python3 app.py
+
+Updated: C:\dapr\dapr.exe run --app-id python-app --app-port 5000 --dapr-http-port 3500 --resources-path ../dapr-components -- python3 app.py
+
+
 ```
 
 Run the `go-app` (inventory) service in a new terminal window:
 
 ```bash
 dapr run --app-id go-app --app-port 8050 --dapr-http-port 3502 --components-path ./dapr-components -- go run .
+
+Updated: C:\dapr\dapr.exe run --app-id go-app --app-port 8050 --dapr-http-port 3502 --resources-path ../dapr-components -- go run .
 ```
 
 `State management`: orders app calls the Dapr State Store APIs which are bound to a Redis container that is preinstalled with Dapr. When the application is later deployed to Azure Container Apps, the component config yaml will be modified to point to an Azure CosmosDb instance. No code changes will be needed since the Dapr State Store API is completely portable.

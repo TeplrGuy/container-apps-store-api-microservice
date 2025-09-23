@@ -7,3 +7,4 @@ dotnet-service/Properties/
 node_modules/
 go-service/container-go-hello-mux
 .tye/
+azure-credentials.json

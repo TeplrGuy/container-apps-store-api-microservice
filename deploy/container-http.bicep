@@ -15,11 +15,11 @@ param env array = []
 param revisionMode string = 'Single'
 
 
-resource environment 'Microsoft.App/managedEnvironments@2022-03-01' existing = {
+resource environment 'Microsoft.App/managedEnvironments@2025-01-01' existing = {
   name: environmentName
 }
 
-resource containerApp 'Microsoft.App/containerApps@2022-03-01' = {
+resource containerApp 'Microsoft.App/containerApps@2025-01-01' = {
   name: containerAppName
   location: location
   properties: {

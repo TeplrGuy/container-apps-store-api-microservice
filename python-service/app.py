@@ -11,6 +11,39 @@ logging.basicConfig(level=logging.INFO)
 app = flask.Flask(__name__)
 CORS(app)
 
+# Simple startup/health coordination
+initialized = False
+
+def background_init():
+    # attempt to contact dapr sidecar and a quick state store call to ensure dependencies
+    from dapr.clients import DaprClient
+    import time
+    attempts = 0
+    max_attempts = 30
+    while attempts < max_attempts:
+        try:
+            with DaprClient() as d:
+                # quick call to ensure dapr is responsive
+                d.wait(2)
+                # try to list state (get a non-existent key) — quick check that state store binding is reachable
+                try:
+                    _ = d.get_state(store_name='orders', key='__health_check__')
+                except Exception:
+                    # state store may not be ready yet
+                    raise
+                # if we get here dependencies are reachable
+                global initialized
+                initialized = True
+                return
+        except Exception as e:
+            app.logger.debug('health init attempt failed: %s', e)
+            attempts += 1
+            time.sleep(2)
+
+# start background initialization without blocking app.run
+import threading
+threading.Thread(target=background_init, daemon=True).start()
+
 @app.route('/order', methods=['GET'])
 def getOrder():
     app.logger.info('order service called')
@@ -81,5 +114,21 @@ def deleteOrder():
             resp = jsonify('Order "id" not found in query string')
             resp.status_code = 400
             return resp
+
+
+    @app.route('/health/live', methods=['GET'])
+    def live():
+        return ('', 200)
+
+
+    @app.route('/health/ready', methods=['GET'])
+    def ready():
+        # return 200 only when background dependency checks succeeded
+        return ('', 200) if initialized else ('', 503)
+
+
+    @app.route('/health/startup', methods=['GET'])
+    def startup():
+        return ('', 200) if initialized else ('', 503)
 
 app.run(host='0.0.0.0', port=os.getenv('PORT', '5000'))

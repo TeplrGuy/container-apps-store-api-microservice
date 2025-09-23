@@ -7,6 +7,7 @@ var logger = require('morgan');
 var indexRouter = require('./routes/index');
 var ordersRouter = require('./routes/orders');
 var inventoryRouter = require('./routes/inventory');
+var healthRouter = require('./routes/health');
 
 const appPort = process.env.PORT || 3000; 
 var app = express();
@@ -29,6 +30,7 @@ app.use(express.static(path.join(__dirname, 'open-api')));
 app.use('/', indexRouter);
 app.use('/order', ordersRouter);
 app.use('/inventory', inventoryRouter);
+app.use('/health', healthRouter);
 
 
 

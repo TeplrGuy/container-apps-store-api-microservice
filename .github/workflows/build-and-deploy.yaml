@@ -89,6 +89,7 @@ jobs:
   deploy:
     if: github.repository != 'Azure-samples/container-apps-store-api-microservice'
     runs-on: ubuntu-latest
+    environment: dev
     needs: [package-services]
     steps:
       - name: Checkout repository

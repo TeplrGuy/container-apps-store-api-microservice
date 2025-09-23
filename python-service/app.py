@@ -116,19 +116,19 @@ def deleteOrder():
             return resp
 
 
-    @app.route('/health/live', methods=['GET'])
-    def live():
-        return ('', 200)
+@app.route('/health/live', methods=['GET'])
+def live():
+    return ('', 200)
 
 
-    @app.route('/health/ready', methods=['GET'])
-    def ready():
-        # return 200 only when background dependency checks succeeded
-        return ('', 200) if initialized else ('', 503)
+@app.route('/health/ready', methods=['GET'])
+def ready():
+    # return 200 only when background dependency checks succeeded
+    return ('', 200) if initialized else ('', 503)
 
 
-    @app.route('/health/startup', methods=['GET'])
-    def startup():
-        return ('', 200) if initialized else ('', 503)
+@app.route('/health/startup', methods=['GET'])
+def startup():
+    return ('', 200) if initialized else ('', 503)
 
 app.run(host='0.0.0.0', port=os.getenv('PORT', '5000'))

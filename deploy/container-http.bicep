@@ -16,7 +16,8 @@ param isPrivateRegistry bool
 param enableIngress bool 
 @secure()
 param registryPassword string
-param minReplicas int = 0
+// Ensure at least one replica is available by default
+param minReplicas int = 1
 param secrets array = []
 param env array = []
 param revisionMode string = 'Single'

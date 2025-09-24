@@ -97,7 +97,7 @@ Updated: C:\dapr\dapr.exe run --app-id node-app --app-port 3000 --dapr-http-port
 Run the `python-app` (order) service in a new terminal window:
 
 ```bash
-dapr run --app-id python-app --app-port 5000 --dapr-http-port 3500 --components-path ./dapr-components -- python3 app.py
+dapr run --app-id python-app --app-port 5000 --dapr-http-port 3500 --components-path ./dapr-components -- python app.py
 
 Updated: C:\dapr\dapr.exe run --app-id python-app --app-port 5000 --dapr-http-port 3500 --resources-path ../dapr-components -- python3 app.py
 

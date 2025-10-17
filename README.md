@@ -56,4 +56,17 @@ The entire solution is configured with [GitHub Actions](https://github.com/featu
 
 [Click here for instructions on building and running the application locally](build-and-run.md)
 
+## 📖 Documentation
+
+Comprehensive documentation is available in the [Wiki](https://github.com/TeplrGuy/container-apps-store-api-microservice/wiki):
+
+- **[Getting Started Guide](https://github.com/TeplrGuy/container-apps-store-api-microservice/wiki/Getting-Started)** - Quick start instructions
+- **[Architecture Overview](https://github.com/TeplrGuy/container-apps-store-api-microservice/wiki/Architecture-Overview)** - System design and components
+- **[Deployment Guide](https://github.com/TeplrGuy/container-apps-store-api-microservice/wiki/Deployment-Guide)** - Azure deployment instructions
+- **[API Documentation](https://github.com/TeplrGuy/container-apps-store-api-microservice/wiki/API-Documentation)** - Complete API reference
+- **[Local Development](https://github.com/TeplrGuy/container-apps-store-api-microservice/wiki/Local-Development)** - Development environment setup
+- **[Troubleshooting](https://github.com/TeplrGuy/container-apps-store-api-microservice/wiki/Troubleshooting)** - Common issues and solutions
+
+The wiki documentation is also available in the [`/wiki`](./wiki) directory of this repository.
+
 
